@@ -1,0 +1,3 @@
+/home/ligz/code/learnPcl/build/CMakeFiles/pcd_write_test.dir
+/home/ligz/code/learnPcl/build/CMakeFiles/edit_cache.dir
+/home/ligz/code/learnPcl/build/CMakeFiles/rebuild_cache.dir
