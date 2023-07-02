@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ligz/code/learnPcl
+CMAKE_SOURCE_DIR = /home/ligz/code/learnPcl/00pcd_write
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ligz/code/learnPcl/build
+CMAKE_BINARY_DIR = /home/ligz/code/learnPcl/00pcd_write/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ligz/code/learnPcl/build/CMakeFiles /home/ligz/code/learnPcl/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ligz/code/learnPcl/00pcd_write/build/CMakeFiles /home/ligz/code/learnPcl/00pcd_write/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ligz/code/learnPcl/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ligz/code/learnPcl/00pcd_write/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pcd_write_test
+# Target rules for targets named pcd_write
 
 # Build rule for target.
-pcd_write_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pcd_write_test
-.PHONY : pcd_write_test
+pcd_write: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pcd_write
+.PHONY : pcd_write
 
 # fast build rule for target.
-pcd_write_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write_test.dir/build.make CMakeFiles/pcd_write_test.dir/build
-.PHONY : pcd_write_test/fast
+pcd_write/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write.dir/build.make CMakeFiles/pcd_write.dir/build
+.PHONY : pcd_write/fast
 
 pcd_write.o: pcd_write.cpp.o
 .PHONY : pcd_write.o
 
 # target to build an object file
 pcd_write.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write_test.dir/build.make CMakeFiles/pcd_write_test.dir/pcd_write.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write.dir/build.make CMakeFiles/pcd_write.dir/pcd_write.cpp.o
 .PHONY : pcd_write.cpp.o
 
 pcd_write.i: pcd_write.cpp.i
@@ -142,7 +142,7 @@ pcd_write.i: pcd_write.cpp.i
 
 # target to preprocess a source file
 pcd_write.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write_test.dir/build.make CMakeFiles/pcd_write_test.dir/pcd_write.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write.dir/build.make CMakeFiles/pcd_write.dir/pcd_write.cpp.i
 .PHONY : pcd_write.cpp.i
 
 pcd_write.s: pcd_write.cpp.s
@@ -150,7 +150,7 @@ pcd_write.s: pcd_write.cpp.s
 
 # target to generate assembly for a file
 pcd_write.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write_test.dir/build.make CMakeFiles/pcd_write_test.dir/pcd_write.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcd_write.dir/build.make CMakeFiles/pcd_write.dir/pcd_write.cpp.s
 .PHONY : pcd_write.cpp.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... pcd_write_test"
+	@echo "... pcd_write"
 	@echo "... pcd_write.o"
 	@echo "... pcd_write.i"
 	@echo "... pcd_write.s"

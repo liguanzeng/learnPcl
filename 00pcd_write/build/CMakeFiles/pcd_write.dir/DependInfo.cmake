@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ligz/code/learnPcl/pcd_write.cpp" "CMakeFiles/pcd_write_test.dir/pcd_write.cpp.o" "gcc" "CMakeFiles/pcd_write_test.dir/pcd_write.cpp.o.d"
+  "/home/ligz/code/learnPcl/00pcd_write/pcd_write.cpp" "CMakeFiles/pcd_write.dir/pcd_write.cpp.o" "gcc" "CMakeFiles/pcd_write.dir/pcd_write.cpp.o.d"
   )
 
 # Targets to which this target links.

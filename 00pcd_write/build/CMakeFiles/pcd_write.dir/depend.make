@@ -1,2 +1,2 @@
-# Empty dependencies file for pcd_write_test.
+# Empty dependencies file for pcd_write.
 # This may be replaced when dependencies are built.

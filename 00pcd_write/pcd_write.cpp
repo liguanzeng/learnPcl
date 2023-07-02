@@ -1,10 +1,14 @@
-#include <iostream>
-#include <pcl/io/pcd_io.h>
-#include <pcl/point_types.h>
+#include <iostream>   //标准c++输入输出相关头文件
+#include <pcl/io/pcd_io.h>    //pcd读写相关头文件
+#include <pcl/point_types.h>  //pcl中支持的点类型头文件
 
- int main ()
+// 定义点云格式
+typedef pcl::PointXYZ PointT;
+
+int
+  main (int argc, char** argv)
 {
-  pcl::PointCloud<pcl::PointXYZ> cloud;
+  pcl::PointCloud<PointT> cloud;
 
   // Fill in the cloud data
   cloud.width    = 5;
