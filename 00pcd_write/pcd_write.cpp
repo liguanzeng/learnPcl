@@ -2,8 +2,7 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 
- int
-  main ()
+ int main ()
 {
   pcl::PointCloud<pcl::PointXYZ> cloud;
 
@@ -26,5 +25,5 @@
   for (const auto& point: cloud)
     std::cerr << "    " << point.x << " " << point.y << " " << point.z << std::endl;
 
- return (0);
+  return (0);
 }
