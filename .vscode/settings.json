@@ -66,5 +66,8 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "workbench.activityBar.visible": true,
+    "editor.suggest.preview": false,
+    "workbench.editor.enablePreview": false
 }
