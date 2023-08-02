@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/range_image_border_extraction.dir/range_image_border_extraction.cpp.o"
-  "CMakeFiles/range_image_border_extraction.dir/range_image_border_extraction.cpp.o.d"
-  "range_image_border_extraction"
   "range_image_border_extraction.pdb"
+  "range_image_border_extraction"
 )
 
 # Per-language clean rules from dependency scanning.
