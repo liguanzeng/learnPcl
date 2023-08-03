@@ -9,6 +9,7 @@ cmake .. // 对上一级进行编译
 make  // 生成可执行文件命令
 ./executedemo  // 运行可执行文件
 ```
+
 ## 包含内容
 
 1. 去噪滤波
@@ -32,6 +33,11 @@ make  // 生成可执行文件命令
 1. NARF
 2. SIFT
 3. FAST
+
+## RangeImage
+
+> 深度图
+> 基于深度图可以有更丰富的扩展应用
 
 ## Registration
 
