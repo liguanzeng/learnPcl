@@ -13,6 +13,7 @@
 #include <pcl/common/transforms.h>
 #include <pcl/console/parse.h>
 
+//定义类型别名
 typedef pcl::PointXYZRGBA PointType;
 typedef pcl::Normal NormalType;
 typedef pcl::ReferenceFrame RFType;
@@ -21,17 +22,17 @@ typedef pcl::SHOT352 DescriptorType;
 std::string model_filename_;
 std::string scene_filename_;
 
-//Algorithm params
-bool show_keypoints_ (false);
-bool show_correspondences_ (false);
-bool use_cloud_resolution_ (false);
-bool use_hough_ (true);
-float model_ss_ (0.01f);
-float scene_ss_ (0.03f);
-float rf_rad_ (0.015f);
-float descr_rad_ (0.02f);
-float cg_size_ (0.01f);
-float cg_thresh_ (5.0f);
+//Algorithm params  算法所用参数
+bool show_keypoints_ (false);           //是否显示keypoints
+bool show_correspondences_ (false);     //是否显示对应关系
+bool use_cloud_resolution_ (false);     //是否使用点云分辨率
+bool use_hough_ (true);                 //是否使用Hough算法,默认使用
+float model_ss_ (0.01f);                //模型均匀采样半径
+float scene_ss_ (0.03f);                //场景均匀采样半径
+float rf_rad_ (0.015f);                 //参照系半径
+float descr_rad_ (0.02f);               //描述半径      
+float cg_size_ (0.01f);                 //聚类规模
+float cg_thresh_ (5.0f);                //聚类阈值
 
 void
 showHelp (char *filename)
@@ -58,6 +59,7 @@ showHelp (char *filename)
   std::cout << "     --cg_thresh val:        Clustering threshold (default 5)" << std::endl << std::endl;
 }
 
+//函数1:解析命令行参数
 void
 parseCommandLine (int argc, char *argv[])
 {
@@ -68,7 +70,7 @@ parseCommandLine (int argc, char *argv[])
     exit (0);
   }
 
-  //Model & scene filenames
+  //Model & scene filenames 从console输入获取.pcd文件名
   std::vector<int> filenames;
   filenames = pcl::console::parse_file_extension_argument (argc, argv, ".pcd");
   if (filenames.size () != 2)
@@ -78,6 +80,7 @@ parseCommandLine (int argc, char *argv[])
     exit (-1);
   }
 
+  //两个pcd文件,分别对应model和scene
   model_filename_ = argv[filenames[0]];
   scene_filename_ = argv[filenames[1]];
 
@@ -98,6 +101,7 @@ parseCommandLine (int argc, char *argv[])
   std::string used_algorithm;
   if (pcl::console::parse_argument (argc, argv, "--algorithm", used_algorithm) != -1)
   {
+    //字符创比较
     if (used_algorithm.compare ("Hough") == 0)
     {
       use_hough_ = true;
@@ -113,7 +117,7 @@ parseCommandLine (int argc, char *argv[])
     }
   }
 
-  //General parameters
+  //General parameters 从console输入解析参数
   pcl::console::parse_argument (argc, argv, "--model_ss", model_ss_);
   pcl::console::parse_argument (argc, argv, "--scene_ss", scene_ss_);
   pcl::console::parse_argument (argc, argv, "--rf_rad", rf_rad_);
@@ -122,17 +126,23 @@ parseCommandLine (int argc, char *argv[])
   pcl::console::parse_argument (argc, argv, "--cg_thresh", cg_thresh_);
 }
 
+//函数2:计算点云分辨率
+//step1: 遍历点云中的每一个点
+//step2: 找到与其最近的点，并求出两点距离
+//step3: 累加两点距离之和，并除以点云数量（剔除无效点），所得结果便是点云空间分辨率
 double
 computeCloudResolution (const pcl::PointCloud<PointType>::ConstPtr &cloud)
 {
   double res = 0.0;
   int n_points = 0;
-  int nres;
+  int nres; 
   std::vector<int> indices (2);
   std::vector<float> sqr_distances (2);
+  // setp1:新建kdtree用于搜索
   pcl::search::KdTree<PointType> tree;
   tree.setInputCloud (cloud);
 
+  // step2:遍历点云每个点,并找出与它距离最近的点
   for (std::size_t i = 0; i < cloud->size (); ++i)
   {
     if (! std::isfinite ((*cloud)[i].x))
@@ -140,13 +150,16 @@ computeCloudResolution (const pcl::PointCloud<PointType>::ConstPtr &cloud)
       continue;
     }
     //Considering the second neighbor since the first is the point itself.
+    //取第二个距离,因为第一个是它本身
     nres = tree.nearestKSearch (i, 2, indices, sqr_distances);
+    //step3:统计最小距离和、有效点数量
     if (nres == 2)
     {
       res += sqrt (sqr_distances[1]);
       ++n_points;
     }
   }
+  //setp4:计算空间分辨率
   if (n_points != 0)
   {
     res /= n_points;
@@ -210,7 +223,7 @@ main (int argc, char *argv[])
   //
   //  Compute Normals
   //
-  pcl::NormalEstimationOMP<PointType, NormalType> norm_est;
+  pcl::NormalEstimationOMP<PointType, NormalType> norm_est;   //使用 OpenMP 标准并行估计每个 3D 点的局部表面属性
   norm_est.setKSearch (10);
   norm_est.setInputCloud (model);
   norm_est.compute (*model_normals);
@@ -221,7 +234,6 @@ main (int argc, char *argv[])
   //
   //  Downsample Clouds to Extract keypoints
   //
-
   pcl::UniformSampling<PointType> uniform_sampling;
   uniform_sampling.setInputCloud (model);
   uniform_sampling.setRadiusSearch (model_ss_);
@@ -252,6 +264,7 @@ main (int argc, char *argv[])
 
   //
   //  Find Model-Scene Correspondences with KdTree
+  //  使用 KdTree 寻找 model 和 scene 之间的对应关系
   //
   pcl::CorrespondencesPtr model_scene_corrs (new pcl::Correspondences ());
 
