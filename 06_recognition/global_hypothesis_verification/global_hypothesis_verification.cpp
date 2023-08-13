@@ -329,7 +329,13 @@ main (int argc,
     pcl::PointCloud<RFType>::Ptr model_rf (new pcl::PointCloud<RFType> ());
     pcl::PointCloud<RFType>::Ptr scene_rf (new pcl::PointCloud<RFType> ());
 
+    /**
+     * pcl::BOARDLocalReferenceFrameEstimation类实现局部坐标系估计方法
+     * 该方法在估计局部坐标系时对处理点云边缘或有孔洞处有特殊的处理方式
+     * 比以往常用的局部坐标系估计方法稳定，可重复性好
+    */
     pcl::BOARDLocalReferenceFrameEstimation<PointType, NormalType, RFType> rf_est;
+    
     rf_est.setFindHoles (true);
     rf_est.setRadiusSearch (rf_rad_);
 
@@ -387,6 +393,7 @@ main (int argc,
 
   /**
    * Generates clouds for each instances found 
+   * 为每个发现的实例创建点云
    */
   std::vector<pcl::PointCloud<PointType>::ConstPtr> instances;
 
@@ -431,9 +438,10 @@ main (int argc,
 
   /**
    * Hypothesis Verification
+   * 假设验证
    */
   std::cout << "--- Hypotheses Verification ---" << std::endl;
-  std::vector<bool> hypotheses_mask;  // Mask Vector to identify positive hypotheses
+  std::vector<bool> hypotheses_mask;  // Mask Vector to identify positive hypotheses  确定积极假设的掩码向量
 
   pcl::GlobalHypothesesVerification<PointType, PointType> GoHv;
 
