@@ -25,6 +25,7 @@ int
   *cloud_out = *cloud_in;
   
   std::cout << "size:" << cloud_out->size() << std::endl;
+  // 对每个点在x上增加0.7f偏差
   for (auto& point : *cloud_out)
     point.x += 0.7f;
 
@@ -33,12 +34,13 @@ int
   for (auto& point : *cloud_out)
     std::cout << point << std::endl;
 
+  // 创建ICP配准使用的ICP对象
   pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
-  icp.setInputSource(cloud_in);
-  icp.setInputTarget(cloud_out);
+  icp.setInputSource(cloud_in); //源点云
+  icp.setInputTarget(cloud_out);  //目标点云
   
   pcl::PointCloud<pcl::PointXYZ> Final;
-  icp.align(Final);
+  icp.align(Final); //对齐？
 
   std::cout << "has converged:" << icp.hasConverged() << " score: " <<
   icp.getFitnessScore() << std::endl;
