@@ -73,7 +73,6 @@
         "cfenv": "cpp",
         "valarray": "cpp"
     },
-    "workbench.activityBar.visible": true,
     "editor.suggest.preview": false,
     "workbench.editor.enablePreview": false,
     "cmake.sourceDirectory": "/home/uisee/code/learnPcl/00_base/pcd_read"
