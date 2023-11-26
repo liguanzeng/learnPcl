@@ -8,7 +8,7 @@
 // using namespace std;
 
 int main() {
-    srand(time(NULL));
+    srand(time(NULL));  // 使用系统时间当做随机数种子，系统的时间一直在变，所以rand()获得的数，也就一直在变，相当于是随机数了
 
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 
