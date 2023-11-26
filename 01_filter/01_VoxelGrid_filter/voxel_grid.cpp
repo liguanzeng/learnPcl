@@ -13,10 +13,13 @@ int main() {
 
     std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height << " data points (" << pcl::getFieldsList(*cloud) << ")." << std::endl;
     
-    //创建VoxelGrid过滤器，叶子大小为1cm
+    //创建一个边长为1cm的体素过滤器
+    float leafSize = 0.01f;
+
+    //创建VoxelGrid过滤器,使用定义好的体素边长
     pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
     sor.setInputCloud(cloud);
-    sor.setLeafSize(0.01f, 0.01f, 0.01f);
+    sor.setLeafSize(leafSize, leafSize, leafSize);
     sor.filter(*cloud_filtered);
 
     std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height << " data points (" << pcl::getFieldsList (*cloud_filtered) << ")." << std::endl;
