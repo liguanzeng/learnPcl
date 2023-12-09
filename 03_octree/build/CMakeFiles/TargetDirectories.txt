@@ -1,3 +1,0 @@
-/home/ligz/code/learnPcl/03_octree/build/CMakeFiles/point_cloud_compression.dir
-/home/ligz/code/learnPcl/03_octree/build/CMakeFiles/edit_cache.dir
-/home/ligz/code/learnPcl/03_octree/build/CMakeFiles/rebuild_cache.dir

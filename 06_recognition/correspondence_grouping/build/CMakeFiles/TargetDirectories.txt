@@ -1,3 +1,0 @@
-/home/uisee/code/learnPcl/06_recognition/correspondence_grouping/build/CMakeFiles/correspondence_grouping.dir
-/home/uisee/code/learnPcl/06_recognition/correspondence_grouping/build/CMakeFiles/edit_cache.dir
-/home/uisee/code/learnPcl/06_recognition/correspondence_grouping/build/CMakeFiles/rebuild_cache.dir

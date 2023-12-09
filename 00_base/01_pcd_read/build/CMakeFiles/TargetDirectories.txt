@@ -1,3 +1,0 @@
-/home/uisee/code/learnPcl/00_base/pcd_read/build/CMakeFiles/edit_cache.dir
-/home/uisee/code/learnPcl/00_base/pcd_read/build/CMakeFiles/rebuild_cache.dir
-/home/uisee/code/learnPcl/00_base/pcd_read/build/CMakeFiles/pcd_read.dir

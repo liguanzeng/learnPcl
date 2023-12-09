@@ -1,3 +1,0 @@
-/home/uisee/code/learnPcl/06_recognition/global_hypothesis_verification/build/CMakeFiles/global_hypothesis_verification.dir
-/home/uisee/code/learnPcl/06_recognition/global_hypothesis_verification/build/CMakeFiles/edit_cache.dir
-/home/uisee/code/learnPcl/06_recognition/global_hypothesis_verification/build/CMakeFiles/rebuild_cache.dir
